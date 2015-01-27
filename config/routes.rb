@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :photos
   resources :categories
   get 'home' => 'home#index'
+  
+  namespace :api, defaults: {format: 'json'} do
+    resources :photos
+    resources :categories
+    get 'home' => 'home#index'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
