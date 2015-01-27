@@ -7,6 +7,9 @@ end
 
 json.photos do
 	json.array!(@photos) do |photo|
-	  json.extract! photo, :id, :link, :thumb
+		json.id photo.id
+		json.link photo.link
+		json.thumb photo.thumb
+		json.category photo.category.name
 	end
 end
