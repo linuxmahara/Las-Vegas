@@ -9,7 +9,7 @@ class JobsController < ApplicationController
     job = Job.new
     job.id = params[:id]
     @photos = job.photos
-    @category = 2
+    @category = params[:category]
     puts @category
     @photos.each do |photo|
       p = Photo.new_flickr(photo.id)
