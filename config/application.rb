@@ -1,6 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'flickraw'
+
+FlickRaw.api_key='095df08218f1a9fcc51e2728b416cb5f'
+FlickRaw.shared_secret='e4ed08a2aede0202'
+
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

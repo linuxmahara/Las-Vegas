@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :photos
   resources :categories
   get 'home' => 'home#index'
-  
+  get 'jobs' => 'jobs#index'
   namespace :api, defaults: {format: 'json'} do
     resources :photos
     resources :categories
