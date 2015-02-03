@@ -9,28 +9,28 @@ class JobsController < ApplicationController
     job = Job.new
     @category = Category.find(params[:category])
     job.id = @category.flickr_id
-    @photos = job.photos
-    @photos.each do |photo|
-      p = Photo.new_flickr(photo.id)
-      if p.nil?
-        p = Photo.new
-        p.flickr_id = photo.id
-        p.url_z = photo.url_z
-        p.url_o = photo.url_o
-        p.url_m = photo.url_m
-        p.category_id = @category.id
-        p.save
-      else
-        p.url_z = photo.url_z
-        p.url_o = photo.url_o
-        p.url_m = photo.url_m
-        p.category_id = @category.id
-        p.save
+    if !category.flickr_id.nil?
+      @photos = job.photos
+      @photos.each do |photo|
+        p = Photo.new_flickr(photo.id)
+        if p.nil?
+          p = Photo.new
+          p.flickr_id = photo.id
+          p.url_z = photo.url_z
+          p.url_o = photo.url_o
+          p.url_m = photo.url_m
+          p.category_id = @category.id
+          p.save
+        else
+          p.url_z = photo.url_z
+          p.url_o = photo.url_o
+          p.url_m = photo.url_m
+          p.category_id = @category.id
+          p.save
+        end
       end
     end 
     
     render :json => @photos.to_json
-    
-
   end
 end
